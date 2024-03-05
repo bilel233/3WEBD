@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import PopupDialog from "../../components/PopupDialog";
 import { getBookIndex } from "../../store/listStore";
-import {RootState} from "../../store";
+import { RootState } from "../../store";
 
 interface Book {
   title: string;
@@ -19,19 +19,18 @@ interface Book {
 const BookDetail = () => {
   const { id, categorie } = useParams<{ id: string; categorie: string }>();
   const [book, setBook] = useState<Book | null>(null);
+  const [author, setAuthor] = useState<any>(null);
   const [showPopup, setShowPopup] = useState(false); // État pour contrôler l'affichage du popup
 
   const allLists = useSelector((state: RootState) => state.list.lists);
   const alreadyAdd = useSelector((state: RootState) => state.list.alreadyAdd);
   const dispatch = useDispatch();
 
-  console.log("UPDATED", alreadyAdd);
-
   useEffect(() => {
     const fetchBook = async () => {
       try {
         const response = await fetch(
-            `https://openlibrary.org/${categorie}/${id}.json`
+          `https://openlibrary.org/${categorie}/${id}.json`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -39,6 +38,14 @@ const BookDetail = () => {
         const data = await response.json();
         console.log("Book data:", data); // Affichage des données récupérées dans la console
         dispatch(getBookIndex({ book: data }));
+
+        const getAuthor = await fetch(
+          `https://openlibrary.org${data.authors[0].author.key}.json`
+        );
+
+        const currentAutor = await getAuthor.json();
+
+        setAuthor(currentAutor);
         setBook(data);
       } catch (error) {
         console.error("Error fetching book data:", error); // Affichage des erreurs dans la console
@@ -58,33 +65,38 @@ const BookDetail = () => {
   };
 
   return (
-      <div>
-        <img
-            src={
-              book?.covers
-                  ? `http://covers.openlibrary.org/b/id/${book?.covers[0]}-M.jpg`
-                  : "https://openlibrary.org/images/icons/avatar_book-sm.png"
-            }
-            alt={book.title}
-        />
-        <h2>{book.title}</h2>
-        <p>Author: {book?.by_statement}</p>
-        <span>Note : </span>
-        <br />
+    <div>
+      <img
+        src={
+          book?.covers
+            ? `http://covers.openlibrary.org/b/id/${book?.covers[0]}-M.jpg`
+            : "https://openlibrary.org/images/icons/avatar_book-sm.png"
+        }
+        alt={book.title}
+      />
+      <h2>{book.title}</h2>
+      <p>Author: {author?.name}</p>
+      <span>Description : </span>
+      <br />
 
-        <span>{book?.notes?.value}</span>
-        <br />
-        {alreadyAdd && allLists && allLists.length > 0 ? (
-            <span>dans la liste {allLists[alreadyAdd?.listIndex].title}</span>
-        ) : (
-            <button onClick={handleAddButtonClick}>Add</button>
-        )}
-        {}
+      <span>{book?.description}</span>
+      <br />
+      <br />
 
-        {showPopup && (
-            <PopupDialog onClose={() => setShowPopup(false)} book={book} />
-        )}
-      </div>
+      <span>Date de parution : </span>
+      <span>{book?.first_publish_date}</span>
+      <br />
+      {alreadyAdd && allLists && allLists.length > 0 ? (
+        <span>dans la liste {allLists[alreadyAdd?.listIndex].title}</span>
+      ) : (
+        <button onClick={handleAddButtonClick}>Add</button>
+      )}
+      {}
+
+      {showPopup && (
+        <PopupDialog onClose={() => setShowPopup(false)} book={book} />
+      )}
+    </div>
   );
 };
 
