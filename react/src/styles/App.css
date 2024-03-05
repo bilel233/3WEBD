@@ -1,0 +1,49 @@
+.main--bg {
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.nav-from-right {
+    justify-content: space-around;
+    margin-right: 30px;
+}
+
+.art-center-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.main-user-cntainer {
+    padding: 10px;
+}
+
+.art-img-center {
+    width: 20%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.art--img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.117);
+}
+
+.art-container {
+    background-color: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.309);
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.img-size-result {
+    width: 50%;
+}
+
+.h1-top-padding {
+    padding-top: 2rem;
+}

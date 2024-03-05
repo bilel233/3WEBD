@@ -1,0 +1,17 @@
+/* footer.css */
+
+.footer {
+    background-color: #f4efe7;
+    color: #5a4a42;
+    text-align: center;
+    padding: 20px;
+    position: fixed; /* position fixe pour rester en bas */
+    bottom: 0; /* collé en bas */
+    left: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: #3e2723;
+    text-decoration: none;
+}

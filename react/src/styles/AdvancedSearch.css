@@ -1,0 +1,33 @@
+.formContainer {
+    margin: 20px;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.input {
+    margin-bottom: 10px;
+}
+
+.button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.resultsList {
+    list-style: none;
+    padding: 0;
+}
+
+.resultItem {
+    margin-bottom: 10px;
+}
+.item img {
+    width: 50px;
+    height: 80px;
+    object-fit: cover;
+}

@@ -1,0 +1,35 @@
+/* Styles spécifiques à BookDetail */
+.book-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-detail h2 {
+    color: #333;
+}
+
+.book-detail p {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.book-detail img {
+    margin-top: 20px;
+    max-width: 300px;
+}
+
+/* Ajoutez ces styles pour personnaliser le bouton */
+.book-detail button {
+  background-color: #007bff; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border: none; /* Supprime la bordure */
+  padding: 10px 20px; /* Ajoute du rembourrage autour du texte */
+  border-radius: 5px; /* Ajoute des coins arrondis */
+  cursor: pointer; /* Change le curseur au survol */
+}
+
+/* Styles spécifiques au survol du bouton */
+.book-detail button:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}

@@ -1,0 +1,34 @@
+.recent-changes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f4efe7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.recent-changes-title {
+    font-family: 'Garamond', 'Times New Roman', serif;
+    color: #3e2723;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.recent-changes-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-changes-list li {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    color: #5a4a42;
+    border-left: 5px solid #a47e5b;
+}
